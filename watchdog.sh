@@ -17,8 +17,12 @@ fi
 # Function to run the Python script
 run_python_script() {
     filepath="$1"
+    script_dir=$(dirname "$filepath")
+    script_name=$(basename "$filepath")
+
     echo "Running script: $filepath"
-    python3 "$filepath"
+    # Change to the script's directory and run the script
+    (cd "$script_dir" && python3 "$script_name")
 }
 
 # Monitor the directory for changes in Python files
